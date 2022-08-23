@@ -1,5 +1,5 @@
 // Menu data structure
-const showingSubMenu = false;
+
 let menuLinks = [
     {text: 'about', href: '/about'},
     {text: 'catalog', href: '#', subLinks: [
@@ -17,40 +17,123 @@ let menuLinks = [
       {text: 'sign out', href: '/account/signout'},
     ]},
   ];
-
+//  Task 1.0
   const mainEl = document.querySelector('main');
-  
-  mainEl.style.backgroundColor = 'var(--main-bg)'
-  
+
+// Task 1.1
+ mainEl.style.backgroundColor = 'var(--main-bg)'
+
+//  Task 1.2
   mainEl.innerHTML = '<h1>SEI ROCKS</h1>'
-  
+
+// Task 1.3
   mainEl.classList.add('flex-ctr');
   
+//  Task 2.0
   const topMenuEl = document.getElementById('top-menu');
   
+//  Task 2.1
   topMenuEl.style.height = '100%';
-  
+
+
+//   task 2.2
   topMenuEl.style.backgroundColor = 'var(--top-menu-bg)'
   
+//  Task 2.3
   topMenuEl.classList.add('flex-around');
   
+//   Task 3.1
   for (link of menuLinks) {
     let newAnchor = document.createElement('a')
     newAnchor.setAttribute('href', link.href)
     newAnchor.textContent = link.text
     topMenuEl.appendChild(newAnchor)
   }
- 
+// DOM part one Completed 
+
+// Task 4.0
   const subMenuEl =document.getElementById('sub-menu');
 
+// Task 4.1
   subMenuEl.style.height = '100%';
 
+// Task 4.2
   subMenuEl.style.backgroundColor =  'var(--sub-menu-bg)';
 
+// Task 4.3
   subMenuEl.classList.add('flex-around');
 
+// Task 4.4
   subMenuEl.style.position = 'absolute';
 
+// Task 4.5
   subMenuEl.style.top = '0';
 
-  const topMenuLinks = document.querySelectorAll('a');
+  
+//  Task 5.0 updated the menulink 
+// Task 5.1
+  const topMenuLinks = document.querySelectorAll('top-menu-links a')
+  let  showingSubMenu = fasle;
+
+//   Task 5.2
+topMenuEl.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = e.target;
+    if (target.tagName !== 'a') {
+      console.log(target.textContent);
+      return;
+      
+    }
+})
+// Task 5.3
+if (link.classList.contains('active')) {
+    link.classList.remove('active');
+    showingSubMenu = false 
+    subMenuEl.style.top = '0';
+    return;
+  } 
+
+// Task 5.4
+topMenuLinks.forEach(function(link){
+    link.classList.remove('active');
+  });
+ 
+// Task 5.5
+  link.classList.add('active');
+ 
+
+// task 5.6
+  
+
+
+
+// Task 6.0
+subMenuEl.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = e.target;
+    if (target.tagName !== 'a') {
+      console.log(target.textContent);
+      return;
+      
+    }
+})
+
+
+// Task 6.1
+showingSubMenu = false;
+subMenuEl.style.top = '0';
+
+
+// Task6.2
+topMenuLinks.forEach(function(link){
+  link.classList.remove('active');
+});
+
+
+// Task 6.3
+mainEl.innerHTML = '<h1>target.textContent</h1>'
+
+
+
+
+
